@@ -1,0 +1,62 @@
+---
+title: "Migrando de VS Code a un entorno basado en IA"
+date: "2026-01-28"
+excerpt: "Mi experiencia adoptando nuevas herramientas generativas y cómo reestructuré mis atajos de teclado."
+tags:
+  - tools
+  - ai
+  - productivity
+---
+
+Después de años usando VS Code como mi editor principal, decidí explorar un flujo de trabajo centrado en herramientas de IA. Aquí comparto lo que aprendí.
+
+## El problema con el flujo tradicional
+
+Mi flujo anterior se veía así:
+
+1. Abrir VS Code
+2. Buscar el archivo correcto
+3. Leer el código, entender el contexto
+4. Hacer el cambio
+5. Probar manualmente
+6. Repetir
+
+El paso 3 era donde más tiempo perdía. Entender contexto en un proyecto grande puede tomar más tiempo que el cambio en sí.
+
+## El nuevo flujo
+
+Con herramientas como Claude Code, el flujo cambia:
+
+```bash
+# Describir la intención
+claude "Add error handling to the payment webhook"
+
+# Claude lee, entiende y propone cambios
+# Yo reviso y apruebo
+```
+
+### Ventajas que encontré
+
+- **Menos cambio de contexto**: No necesito mantener un modelo mental del proyecto completo
+- **Revisiones más rápidas**: El diff es claro y enfocado
+- **Documentación implícita**: Las conversaciones quedan como registro del *por qué*
+
+### Lo que todavía hago manualmente
+
+No todo se puede delegar:
+
+- Decisiones de arquitectura importantes
+- Revisión final de seguridad
+- Tests de integración complejos
+
+## Mis atajos actuales
+
+| Acción | Antes | Ahora |
+|--------|-------|-------|
+| Buscar archivo | `Cmd+P` | Descripción en lenguaje natural |
+| Refactorizar | `F2` + manual | Prompt con contexto |
+| Debug | Breakpoints | Describe el síntoma |
+
+## Conclusión
+
+No se trata de reemplazar VS Code completamente, sino de usar la herramienta correcta para cada tarea. Para cambios quirúrgicos y bien definidos, la IA es más eficiente. Para exploración libre y debugging visual, el editor tradicional sigue siendo valioso.

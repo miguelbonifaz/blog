@@ -1,0 +1,47 @@
+---
+title: "Claude Code: a practical workflow for daily development"
+date: "2026-02-19"
+excerpt: "I use Claude Code as a coding partner to reduce context switching. The workflow is simple: define intent, inspect files, apply patch, then verify."
+tags:
+  - claude-code
+  - productivity
+  - nextjs
+  - ai
+---
+
+I use Claude Code as a coding partner to reduce context switching. The workflow is simple: define intent, inspect files, apply patch, then verify.
+
+## 1. Start with clear intent
+
+Before writing any code, I define exactly what I want to accomplish. This reduces ambiguity and helps the AI understand the scope.
+
+```
+Goal: add a bilingual blog post page.
+Constraints: preserve existing design system and keep changes isolated.
+Definition of done: app builds and posts are visible in /en and /es.
+```
+
+## 2. Keep examples runnable
+
+If the post includes code, I prefer snippets that can be copied and tested quickly.
+
+```javascript
+export function summarizeTask(task) {
+  const scope = task.scope ?? 'small'
+  return `[${scope}] ${task.title}`
+}
+
+console.log(summarizeTask({ title: 'Publish bilingual post' }))
+```
+
+## 3. Verify before shipping
+
+```bash
+npm run build
+```
+
+That final build check catches missing imports, invalid front matter, and route mistakes.
+
+---
+
+Want to read more about integrating AI into your workflow? Stay tuned for upcoming posts on this topic.
