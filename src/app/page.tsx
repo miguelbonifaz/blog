@@ -54,9 +54,7 @@ export default function HomePage() {
           ))}
 
           {posts.length === 0 && (
-            <p className="text-gray-500 text-sm">
-              No hay artículos todavía.
-            </p>
+            <p className="text-gray-500 text-sm">No hay artículos todavía.</p>
           )}
         </div>
       </section>
