@@ -2,20 +2,20 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="w-full max-w-2xl mx-auto px-6 md:px-0 pb-10 pt-8">
+    <footer className="w-full max-w-2xl mx-auto px-6 md:px-0 pb-12 pt-10">
       {/* Separator */}
-      <div className="h-px bg-gradient-to-r from-amber-800/40 via-gray-800/40 to-transparent mb-8" />
+      <div className="h-px bg-gradient-to-r from-[var(--accent-muted)]/50 via-[var(--border)]/70 to-transparent mb-10" />
 
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-0.5">
           <span
-            className="font-serif italic text-sm text-gray-600"
+            className="font-serif italic text-base text-[var(--muted)]"
             style={{ fontFamily: "var(--font-lora), serif" }}
           >
             Miguel Bonifaz
           </span>
           <span
-            className="font-mono text-[10px] text-gray-800 uppercase tracking-widest"
+            className="font-mono text-[11px] text-[var(--muted-2)] uppercase tracking-widest"
             style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
           >
             © 2026
@@ -24,7 +24,7 @@ export function Footer() {
 
         <Link
           href="/rss.xml"
-          className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-800/60 hover:text-amber-600 transition-colors"
+          className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent-muted)]/80 hover:text-[var(--accent)] transition-colors"
           style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         >
           RSS

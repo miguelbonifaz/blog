@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Back link */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-300 transition-colors mb-12 group"
+        className="inline-flex items-center gap-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors mb-12 group"
       >
         <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
         <span
@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-800/70"
+                className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--accent-muted)]/80"
                 style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
               >
                 #{tag}
@@ -83,24 +83,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Title */}
         <h1
-          className="font-serif text-3xl md:text-4xl text-white leading-[1.25] tracking-tight mb-7"
+          className="font-serif text-3xl md:text-4xl text-[var(--heading)] leading-[1.25] tracking-tight mb-7"
           style={{ fontFamily: "var(--font-lora), serif" }}
         >
           {post.title}
         </h1>
 
         {/* Amber accent rule */}
-        <div className="h-[1px] w-full bg-gradient-to-r from-amber-700/60 via-gray-800/60 to-transparent mb-7" />
+        <div className="h-[1px] w-full bg-gradient-to-r from-[var(--accent)]/60 via-[var(--border)]/70 to-transparent mb-7" />
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-[12px] text-gray-600">
+        <div className="flex items-center gap-4 text-[13px] text-[var(--muted)]">
           <span
             className="font-mono"
             style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
           >
             Miguel Bonifaz
           </span>
-          <span className="text-gray-800">·</span>
+          <span className="text-[var(--border-strong)]">·</span>
           <time
             dateTime={post.date}
             className="font-mono tabular-nums"
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               day: "numeric",
             })}
           </time>
-          <span className="text-gray-800">·</span>
+          <span className="text-[var(--border-strong)]">·</span>
           <span
             className="font-mono"
             style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}

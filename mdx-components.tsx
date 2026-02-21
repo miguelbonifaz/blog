@@ -4,7 +4,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
       <h1
-        className="font-serif text-3xl md:text-4xl text-white leading-[1.25] tracking-tight mb-6 mt-14"
+        className="font-serif text-3xl md:text-4xl text-[var(--heading)] leading-[1.25] tracking-tight mb-6 mt-14"
         style={{ fontFamily: "var(--font-lora), serif" }}
       >
         {children}
@@ -12,7 +12,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h2: ({ children }) => (
       <h2
-        className="font-serif text-2xl text-white tracking-tight leading-snug mb-5 mt-14"
+        className="font-serif text-2xl text-[var(--heading)] tracking-tight leading-snug mb-5 mt-14"
         style={{ fontFamily: "var(--font-lora), serif" }}
       >
         {children}
@@ -20,30 +20,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => (
       <h3
-        className="font-serif italic text-xl text-gray-200 tracking-tight leading-snug mb-4 mt-10"
+        className="font-serif italic text-xl text-[var(--foreground)] tracking-tight leading-snug mb-4 mt-10"
         style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic" }}
       >
         {children}
       </h3>
     ),
     p: ({ children }) => (
-      <p className="text-[17px] leading-[1.85] text-gray-300 mb-6">{children}</p>
+      <p className="text-[17px] leading-[1.85] text-[var(--foreground)] mb-6">{children}</p>
     ),
     a: ({ href, children }) => (
       <a
         href={href}
-        className="text-amber-500/90 hover:text-amber-400 transition-colors underline decoration-amber-700/40 underline-offset-4 hover:decoration-amber-500/60"
+        className="text-[var(--accent)] hover:text-[var(--accent-muted)] transition-colors underline decoration-[var(--accent)]/30 underline-offset-4 hover:decoration-[var(--accent-muted)]/50"
       >
         {children}
       </a>
     ),
     ul: ({ children }) => (
-      <ul className="list-none text-gray-300 text-[17px] mb-6 space-y-2.5 pl-4 border-l border-gray-800/70">
+      <ul className="list-none text-[var(--foreground)] text-[17px] mb-6 space-y-2.5 pl-4 border-l border-[var(--border)]">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside text-gray-300 text-[17px] mb-6 space-y-2.5 ml-2">
+      <ol className="list-decimal list-inside text-[var(--foreground)] text-[17px] mb-6 space-y-2.5 ml-2">
         {children}
       </ol>
     ),
@@ -51,7 +51,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <li className="leading-relaxed pl-2">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-2 border-amber-700/50 pl-6 my-10 text-gray-400 italic text-[17px] leading-relaxed bg-amber-950/10 py-4 pr-4 rounded-r-sm">
+      <blockquote className="border-l-2 border-[var(--accent)]/50 pl-6 my-10 text-[var(--muted)] italic text-[17px] leading-relaxed bg-[var(--accent)]/10 py-4 pr-4 rounded-r-sm">
         {children}
       </blockquote>
     ),
@@ -64,7 +64,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }
       return (
         <code
-          className="bg-[#181818] text-amber-400/90 px-1.5 py-0.5 rounded text-[0.875em] font-mono border border-gray-800/60"
+          className="bg-[var(--surface-2)] text-[var(--accent)] px-1.5 py-0.5 rounded text-[0.875em] font-mono border border-[var(--border)]"
           style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         >
           {children}
@@ -73,7 +73,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     pre: ({ children, ...props }) => (
       <pre
-        className="bg-[#0f0f0f] border border-gray-800/50 rounded-lg p-5 md:p-7 overflow-x-auto my-8 font-mono text-[13.5px] leading-relaxed"
+        className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-5 md:p-7 overflow-x-auto my-8 font-mono text-[13.5px] leading-relaxed"
         style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         {...props}
       >
@@ -82,27 +82,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     hr: () => (
       <div className="flex items-center gap-3 my-12">
-        <div className="h-px w-6 bg-amber-700/50" />
-        <div className="h-px flex-1 bg-gray-800/50" />
+        <div className="h-px w-6 bg-[var(--accent)]/50" />
+        <div className="h-px flex-1 bg-[var(--border)]/80" />
       </div>
     ),
     strong: ({ children }) => (
-      <strong className="text-white font-semibold">{children}</strong>
+      <strong className="text-[var(--heading)] font-semibold">{children}</strong>
     ),
     table: ({ children }) => (
-      <div className="overflow-x-auto mb-8 rounded-lg border border-gray-800/60">
-        <table className="w-full text-sm text-gray-300 border-collapse">
+      <div className="overflow-x-auto mb-8 rounded-lg border border-[var(--border)]">
+        <table className="w-full text-sm text-[var(--foreground)] border-collapse">
           {children}
         </table>
       </div>
     ),
     th: ({ children }) => (
-      <th className="border-b border-gray-800 px-5 py-3 text-left text-[12px] uppercase tracking-wider text-gray-500 bg-[#0f0f0f] font-medium">
+      <th className="border-b border-[var(--border)] px-5 py-3 text-left text-[12px] uppercase tracking-wider text-[var(--muted)] bg-[var(--surface-2)] font-medium">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="border-b border-gray-800/40 px-5 py-3 last:border-0 text-[14px]">{children}</td>
+      <td className="border-b border-[var(--border)]/60 px-5 py-3 last:border-0 text-[14px]">{children}</td>
     ),
     ...components,
   };

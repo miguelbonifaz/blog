@@ -7,10 +7,47 @@
 }
 
 :root {
+  --background: #f8f7f3;
+  --foreground: #1c1917;
+  --heading: #0f172a;
+  --muted: #57534e;
+  --muted-2: #78716c;
+  --border: #d6d3d1;
+  --border-strong: #a8a29e;
+  --surface: #ffffff;
+  --surface-2: #f5f5f4;
+  --accent: #b45309;
+  --accent-muted: #92400e;
+  --accent-contrast: #78350f;
+  --nav-bg: rgba(248, 247, 243, 0.95);
+  --selection-bg: rgba(180, 83, 9, 0.2);
+  --selection-text: #451a03;
+  --scrollbar: #a8a29e;
+  --scrollbar-hover: #78716c;
+}
+
+.dark {
   --background: #0a0a0a;
   --foreground: #e5e5e5;
+  --heading: #ffffff;
+  --muted: #a3a3a3;
+  --muted-2: #737373;
+  --border: #262626;
+  --border-strong: #404040;
+  --surface: #111111;
+  --surface-2: #171717;
   --accent: #d97706;
   --accent-muted: #92400e;
+  --accent-contrast: #fde68a;
+  --nav-bg: rgba(10, 10, 10, 0.95);
+  --selection-bg: rgba(217, 119, 6, 0.2);
+  --selection-text: #fde68a;
+  --scrollbar: #2a2a2a;
+  --scrollbar-hover: #444444;
+}
+
+html {
+  font-size: 1.2rem;
 }
 
 body {
@@ -20,35 +57,73 @@ body {
 
 /* ─── Animations ─── */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-12px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes reveal-line {
-  from { transform: scaleX(0); transform-origin: left; }
-  to   { transform: scaleX(1); transform-origin: left; }
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
 
-.animate-fade-in  { animation: fade-in  0.5s ease-out both; }
-.animate-slide-up { animation: slide-up 0.5s ease-out both; }
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out both;
+}
 
 /* Staggered post list items */
-.post-item:nth-child(1) { animation: slide-up 0.45s 0.05s ease-out both; }
-.post-item:nth-child(2) { animation: slide-up 0.45s 0.12s ease-out both; }
-.post-item:nth-child(3) { animation: slide-up 0.45s 0.19s ease-out both; }
-.post-item:nth-child(4) { animation: slide-up 0.45s 0.26s ease-out both; }
-.post-item:nth-child(5) { animation: slide-up 0.45s 0.33s ease-out both; }
-.post-item:nth-child(6) { animation: slide-up 0.45s 0.40s ease-out both; }
+.post-item:nth-child(1) {
+  animation: slide-up 0.45s 0.05s ease-out both;
+}
+.post-item:nth-child(2) {
+  animation: slide-up 0.45s 0.12s ease-out both;
+}
+.post-item:nth-child(3) {
+  animation: slide-up 0.45s 0.19s ease-out both;
+}
+.post-item:nth-child(4) {
+  animation: slide-up 0.45s 0.26s ease-out both;
+}
+.post-item:nth-child(5) {
+  animation: slide-up 0.45s 0.33s ease-out both;
+}
+.post-item:nth-child(6) {
+  animation: slide-up 0.45s 0.4s ease-out both;
+}
 
 /* Masthead rule reveal */
 .masthead-rule {
@@ -56,18 +131,27 @@ body {
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar       { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #444; }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(217, 119, 6, 0.2);
-  color: #fde68a;
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 /* ─── Masthead border ─── */
 .masthead-border {
-  background: linear-gradient(90deg, #d97706 0%, #92400e 50%, transparent 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-muted) 50%, transparent 100%);
 }

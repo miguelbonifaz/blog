@@ -35,9 +35,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var storedTheme = localStorage.getItem("theme");
+                  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  var theme = storedTheme === "light" || storedTheme === "dark"
+                    ? storedTheme
+                    : (prefersDark ? "dark" : "light");
+                  var root = document.documentElement;
+                  root.classList.toggle("dark", theme === "dark");
+                  root.setAttribute("data-theme", theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${ubuntuSans.variable} ${ubuntuSansMono.variable} ${lora.variable} font-sans antialiased min-h-screen bg-[#0a0a0a] text-gray-200 flex flex-col`}
+        className={`${ubuntuSans.variable} ${ubuntuSansMono.variable} ${lora.variable} font-sans antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col`}
       >
         <Navbar />
         <main className="flex-1 flex justify-center px-6 py-12 md:py-20">
