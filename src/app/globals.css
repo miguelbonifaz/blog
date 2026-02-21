@@ -3,11 +3,14 @@
 @theme inline {
   --font-sans: var(--font-ubuntu-sans);
   --font-mono: var(--font-ubuntu-sans-mono);
+  --font-serif: var(--font-lora);
 }
 
 :root {
   --background: #0a0a0a;
   --foreground: #e5e5e5;
+  --accent: #d97706;
+  --accent-muted: #92400e;
 }
 
 body {
@@ -15,55 +18,56 @@ body {
   color: var(--foreground);
 }
 
-/* Smooth animations */
+/* ─── Animations ─── */
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out;
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.5s ease-out;
+@keyframes reveal-line {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
+.animate-fade-in  { animation: fade-in  0.5s ease-out both; }
+.animate-slide-up { animation: slide-up 0.5s ease-out both; }
+
+/* Staggered post list items */
+.post-item:nth-child(1) { animation: slide-up 0.45s 0.05s ease-out both; }
+.post-item:nth-child(2) { animation: slide-up 0.45s 0.12s ease-out both; }
+.post-item:nth-child(3) { animation: slide-up 0.45s 0.19s ease-out both; }
+.post-item:nth-child(4) { animation: slide-up 0.45s 0.26s ease-out both; }
+.post-item:nth-child(5) { animation: slide-up 0.45s 0.33s ease-out both; }
+.post-item:nth-child(6) { animation: slide-up 0.45s 0.40s ease-out both; }
+
+/* Masthead rule reveal */
+.masthead-rule {
+  animation: reveal-line 0.6s 0.1s ease-out both;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
 
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Selection styling */
+/* ─── Selection ─── */
 ::selection {
-  background: rgba(253, 235, 208, 0.15);
-  color: #fdebd0;
+  background: rgba(217, 119, 6, 0.2);
+  color: #fde68a;
+}
+
+/* ─── Masthead border ─── */
+.masthead-border {
+  background: linear-gradient(90deg, #d97706 0%, #92400e 50%, transparent 100%);
 }

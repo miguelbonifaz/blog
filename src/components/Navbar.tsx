@@ -1,39 +1,47 @@
 import Link from "next/link";
-import { Moon } from "lucide-react";
 
 export function Navbar() {
   return (
-    <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between border-b border-gray-800/40 sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-sm z-50">
-      <Link
-        href="/"
-        className="font-serif italic font-bold text-xl tracking-tight text-[#fdebd0] hover:text-white transition-colors"
-      >
-        Miguel Bonifaz
-      </Link>
+    <nav className="w-full sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md">
+      {/* Amber gradient rule at the very top */}
+      <div className="masthead-border h-[2px] w-full masthead-rule" />
 
-      <div className="flex items-center space-x-6 md:space-x-8">
-        <div className="hidden sm:flex items-center space-x-6 text-sm">
+      <div className="px-6 md:px-10 py-4 flex items-center justify-between">
+        {/* Brand / Masthead */}
+        <Link href="/" className="group flex flex-col leading-none">
+          <span
+            className="font-serif italic text-xl tracking-tight text-[#fde68a] transition-colors group-hover:text-white"
+            style={{ fontFamily: "var(--font-lora), serif" }}
+          >
+            Miguel Bonifaz
+          </span>
+          <span
+            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#92400e] mt-0.5 transition-colors group-hover:text-amber-600"
+            style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+          >
+            Blog
+          </span>
+        </Link>
+
+        {/* Nav links */}
+        <div className="flex items-center gap-8 text-[13px] tracking-wide">
           <Link
             href="/"
-            className="text-gray-400 hover:text-gray-200 transition-colors"
+            className="text-gray-500 hover:text-gray-200 transition-colors uppercase tracking-widest text-[11px] font-medium"
           >
             Inicio
           </Link>
           <Link
             href="/#posts"
-            className="text-gray-400 hover:text-gray-200 transition-colors"
+            className="text-gray-500 hover:text-gray-200 transition-colors uppercase tracking-widest text-[11px] font-medium"
           >
-            Posts
+            Artículos
           </Link>
         </div>
-
-        <button
-          className="text-gray-400 hover:text-gray-200 transition-colors"
-          aria-label="Toggle dark mode"
-        >
-          <Moon className="w-4 h-4" />
-        </button>
       </div>
+
+      {/* Bottom separator */}
+      <div className="h-px bg-gray-800/50 mx-6 md:mx-10" />
     </nav>
   );
 }

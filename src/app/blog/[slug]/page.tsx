@@ -50,50 +50,80 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <article className="animate-slide-up">
+      {/* Back link */}
       <Link
         href="/"
-        className="flex items-center text-sm text-gray-500 hover:text-gray-300 transition-colors mb-12 group"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-300 transition-colors mb-12 group"
       >
-        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-        Volver al inicio
+        <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
+        <span
+          className="font-mono text-[11px] uppercase tracking-[0.15em]"
+          style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+        >
+          Volver
+        </span>
       </Link>
 
-      <header className="mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-[1.15] mb-6">
+      {/* Post header */}
+      <header className="mb-12">
+        {/* Tags */}
+        {post.tags.length > 0 && (
+          <div className="flex gap-3 flex-wrap mb-5">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="font-mono text-[10px] uppercase tracking-[0.2em] text-amber-800/70"
+                style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Title */}
+        <h1
+          className="font-serif text-3xl md:text-4xl text-white leading-[1.25] tracking-tight mb-7"
+          style={{ fontFamily: "var(--font-lora), serif" }}
+        >
           {post.title}
         </h1>
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-center space-x-3 text-sm text-gray-400">
-            <span className="text-gray-200 font-medium">Miguel</span>
-            <span>&middot;</span>
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString("es-ES", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
-            <span>&middot;</span>
-            <span>{post.readingTime}</span>
-          </div>
+        {/* Amber accent rule */}
+        <div className="h-[1px] w-full bg-gradient-to-r from-amber-700/60 via-gray-800/60 to-transparent mb-7" />
 
-          {post.tags.length > 0 && (
-            <div className="flex gap-3 flex-wrap">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[11px] uppercase tracking-wider text-gray-500 hover:text-gray-300 transition-colors"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          )}
+        {/* Meta */}
+        <div className="flex items-center gap-4 text-[12px] text-gray-600">
+          <span
+            className="font-mono"
+            style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+          >
+            Miguel Bonifaz
+          </span>
+          <span className="text-gray-800">·</span>
+          <time
+            dateTime={post.date}
+            className="font-mono tabular-nums"
+            style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+          >
+            {new Date(post.date).toLocaleDateString("es-ES", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          <span className="text-gray-800">·</span>
+          <span
+            className="font-mono"
+            style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+          >
+            {post.readingTime}
+          </span>
         </div>
       </header>
 
-      <div>
+      {/* MDX content */}
+      <div className="prose-content">
         <MDXRemote
           source={post.content}
           components={components}
