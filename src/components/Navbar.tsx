@@ -11,14 +11,12 @@ export function Navbar() {
         {/* Brand / Masthead */}
         <Link href="/" className="group flex flex-col leading-none">
           <span
-            className="font-serif italic text-xl tracking-tight text-[var(--accent-contrast)] transition-colors group-hover:text-[var(--heading)]"
-            style={{ fontFamily: "var(--font-lora), serif" }}
+            className="font-sans text-xl tracking-tight text-[var(--accent-contrast)] transition-colors group-hover:text-[var(--heading)]"
           >
             Miguel Bonifaz
           </span>
           <span
-            className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--accent-muted)] mt-0.5 transition-colors group-hover:text-[var(--accent)]"
-            style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+            className="font-sans text-[10px] uppercase tracking-[0.2em] text-[var(--accent-muted)] mt-0.5 transition-colors group-hover:text-[var(--accent)]"
           >
             Blog
           </span>

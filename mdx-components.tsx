@@ -74,8 +74,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     pre: ({ children, ...props }) => (
       <CodeBlock
-        className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-5 md:p-7 overflow-x-auto my-8 font-mono text-[13.5px] leading-relaxed"
-        style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+        className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-5 md:p-7 overflow-x-auto my-8 font-sans text-[13.5px] leading-relaxed"
+        style={{ fontFamily: "var(--font-ubuntu-sans), sans-serif" }}
         {...props}
       >
         {children}
