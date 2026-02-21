@@ -44,10 +44,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </blockquote>
     ),
-    code: ({ children, className }) => {
-      const isBlock = className?.includes("language-");
+    // rehype-pretty-code adds data-language to block <code> elements.
+    // We pass those through untouched so Shiki's inline color styles are preserved.
+    // Inline <code> (no data-language) gets its own visual treatment.
+    code: ({ children, ...props }) => {
+      const isBlock = "data-language" in props;
       if (isBlock) {
-        return <code className={`${className ?? ""}`}>{children}</code>;
+        return <code {...props}>{children}</code>;
       }
       return (
         <code className="bg-[#1a1a1a] text-orange-300 px-1.5 py-0.5 rounded text-[0.9em] font-mono">
@@ -55,8 +58,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </code>
       );
     },
-    pre: ({ children }) => (
-      <pre className="bg-[#111111] border border-gray-800/60 rounded-xl p-6 md:p-8 overflow-x-auto shadow-sm mb-8 font-mono text-sm leading-relaxed">
+    // rehype-pretty-code sets keepBackground: false in page.tsx, so we control
+    // the background here via className. The token colors come from inline styles on spans.
+    pre: ({ children, ...props }) => (
+      <pre
+        className="bg-[#111111] border border-gray-800/60 rounded-xl p-6 md:p-8 overflow-x-auto shadow-sm my-8 font-mono text-sm leading-relaxed"
+        {...props}
+      >
         {children}
       </pre>
     ),

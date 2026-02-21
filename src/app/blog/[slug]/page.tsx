@@ -5,6 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
 import { getPostBySlug, getAllSlugs } from "@/lib/posts";
 import { useMDXComponents } from "../../../../mdx-components";
 import type { Metadata } from "next";
@@ -30,6 +31,12 @@ export async function generateMetadata({
     description: post.excerpt,
   };
 }
+
+const prettyCodeOptions = {
+  theme: "one-dark-pro",
+  keepBackground: false,
+  defaultLang: "plaintext",
+};
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
@@ -86,14 +93,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </header>
 
-      <div className="prose-custom">
+      <div>
         <MDXRemote
           source={post.content}
           components={components}
           options={{
             mdxOptions: {
               remarkPlugins: [remarkGfm],
-              rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+              rehypePlugins: [
+                rehypeSlug,
+                rehypeAutolinkHeadings,
+                [rehypePrettyCode, prettyCodeOptions],
+              ],
             },
           }}
         />
