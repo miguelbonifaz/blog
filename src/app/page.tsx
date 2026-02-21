@@ -11,10 +11,10 @@ export default function HomePage() {
       <section className="mb-16 pt-2">
         {/* Issue label */}
         <p
-          className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)]/80 mb-5"
+          className="font-mono text-[12px] uppercase tracking-[0.25em] text-[var(--accent)]/80 mb-5"
           style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         >
-          Desarrollo · IA · Diseño
+          Desarrollo · IA · Laravel
         </p>
 
         <h1
@@ -22,7 +22,10 @@ export default function HomePage() {
           style={{ fontFamily: "var(--font-lora), serif" }}
         >
           Hola, soy{" "}
-          <em className="italic text-[var(--accent)] not-italic" style={{ fontStyle: "italic" }}>
+          <em
+            className="italic text-[var(--accent)] not-italic"
+            style={{ fontStyle: "italic" }}
+          >
             Miguel.
           </em>
         </h1>
@@ -61,17 +64,24 @@ export default function HomePage() {
         </header>
 
         {posts.length === 0 ? (
-          <p className="text-[var(--muted)] text-base">No hay artículos todavía.</p>
+          <p className="text-[var(--muted)] text-base">
+            No hay artículos todavía.
+          </p>
         ) : (
           <div className="flex flex-col divide-y divide-[var(--border)]/70">
             {posts.map((post) => (
-              <article key={post.slug} className="post-item group py-8 first:pt-0">
+              <article
+                key={post.slug}
+                className="post-item group py-8 first:pt-0"
+              >
                 <Link href={`/blog/${post.slug}`} className="block">
                   {/* Meta row */}
                   <div className="flex items-center gap-4 mb-4">
                     <time
                       className="font-mono text-xs text-[var(--muted)] tabular-nums"
-                      style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+                      style={{
+                        fontFamily: "var(--font-ubuntu-sans-mono), monospace",
+                      }}
                       dateTime={post.date}
                     >
                       {new Date(post.date).toLocaleDateString("es-ES", {
@@ -84,7 +94,9 @@ export default function HomePage() {
                       <span
                         key={tag}
                         className="font-mono text-xs text-[var(--accent-muted)]/80 uppercase tracking-wider"
-                        style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+                        style={{
+                          fontFamily: "var(--font-ubuntu-sans-mono), monospace",
+                        }}
                       >
                         #{tag}
                       </span>
@@ -92,7 +104,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-[18px] md:text-[20px] font-medium text-[var(--foreground)] leading-snug transition-colors duration-200 group-hover:text-[var(--heading)] mb-2">
+                  <h3 className="md:text-[20px] font-medium text-[var(--foreground)] leading-snug transition-colors duration-200 group-hover:text-[var(--heading)] mb-2">
                     {post.title}
                   </h3>
 
@@ -106,7 +118,9 @@ export default function HomePage() {
                     <div className="h-px w-4 bg-[var(--accent)]" />
                     <span
                       className="font-mono text-[11px] text-[var(--accent)] uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+                      style={{
+                        fontFamily: "var(--font-ubuntu-sans-mono), monospace",
+                      }}
                     >
                       Leer
                     </span>

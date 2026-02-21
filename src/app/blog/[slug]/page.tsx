@@ -72,8 +72,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--accent-muted)]/80"
-                style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent-muted)]/80"
+                style={{
+                  fontFamily: "var(--font-ubuntu-sans-mono), monospace",
+                }}
               >
                 #{tag}
               </span>
