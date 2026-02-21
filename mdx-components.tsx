@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { CodeBlock } from "@/components/CodeBlock";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -72,13 +73,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     pre: ({ children, ...props }) => (
-      <pre
+      <CodeBlock
         className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-5 md:p-7 overflow-x-auto my-8 font-mono text-[13.5px] leading-relaxed"
         style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         {...props}
       >
         {children}
-      </pre>
+      </CodeBlock>
     ),
     hr: () => (
       <div className="flex items-center gap-3 my-12">
