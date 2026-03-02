@@ -1,6 +1,15 @@
 "use client";
 
-export function Newsletter() {
+import type { Locale } from "@/lib/i18n";
+import { getUiCopy } from "@/lib/i18n";
+
+interface NewsletterProps {
+  locale: Locale;
+}
+
+export function Newsletter({ locale }: NewsletterProps) {
+  const copy = getUiCopy(locale);
+
   return (
     <section className="relative mb-16 border border-[var(--border)]/80 rounded-lg overflow-hidden bg-[var(--surface)]">
       {/* Warm gradient accent bar */}
@@ -12,17 +21,16 @@ export function Newsletter() {
           className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)]/80 mb-4"
           style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         >
-          Newsletter
+          {copy.newsletter.label}
         </p>
 
         <div className="flex flex-col md:flex-row md:items-end gap-6">
           <div className="flex-1">
             <h3 className="text-base font-medium text-[var(--heading)] mb-1.5">
-              Artículos directo a tu bandeja
+              {copy.newsletter.title}
             </h3>
             <p className="text-sm text-[var(--muted)] leading-relaxed max-w-sm">
-              Cero spam. Solo desarrollo web, productividad y diseño cuando
-              publique algo nuevo.
+              {copy.newsletter.description}
             </p>
           </div>
 
@@ -32,7 +40,7 @@ export function Newsletter() {
           >
             <input
               type="email"
-              placeholder="tu@email.com"
+              placeholder={copy.newsletter.emailPlaceholder}
               className="flex-1 bg-[var(--surface-2)] border border-[var(--border)] rounded px-4 py-2.5 text-sm text-[var(--foreground)] placeholder:text-[var(--muted-2)] focus:outline-none focus:border-[var(--accent)]/60 transition-colors"
               required
             />
@@ -40,7 +48,7 @@ export function Newsletter() {
               type="submit"
               className="bg-[var(--accent)]/90 hover:bg-[var(--accent)] text-[var(--heading)] dark:text-white font-medium text-sm px-5 py-2.5 rounded transition-colors whitespace-nowrap"
             >
-              Suscribirse
+              {copy.newsletter.submit}
             </button>
           </form>
         </div>

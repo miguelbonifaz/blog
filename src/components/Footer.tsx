@@ -1,6 +1,14 @@
 import Link from "next/link";
+import type { Locale } from "@/lib/i18n";
+import { getUiCopy } from "@/lib/i18n";
 
-export function Footer() {
+interface FooterProps {
+  locale: Locale;
+}
+
+export function Footer({ locale }: FooterProps) {
+  const copy = getUiCopy(locale);
+
   return (
     <footer className="w-full max-w-2xl mx-auto px-6 md:px-0 pb-12 pt-10">
       {/* Separator */}
@@ -27,7 +35,7 @@ export function Footer() {
           className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent-muted)]/80 hover:text-[var(--accent)] transition-colors"
           style={{ fontFamily: "var(--font-ubuntu-sans-mono), monospace" }}
         >
-          RSS
+          {copy.footer.rss}
         </Link>
       </div>
     </footer>

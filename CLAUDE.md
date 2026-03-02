@@ -19,7 +19,7 @@ This is a Next.js 16 App Router blog with MDX content. The key architectural dec
 
 ### Content pipeline
 
-Posts live as `.mdx` files in `content/posts/` with YAML frontmatter (`title`, `date`, `excerpt`, `tags`). They are **not** routed directly as Next.js pages — instead, `src/lib/posts.ts` reads and parses them at build time using `gray-matter` and `reading-time`. The dynamic route `src/app/blog/[slug]/page.tsx` fetches a post via `getPostBySlug(slug)` and renders it using `next-mdx-remote/rsc` (a React Server Component).
+Posts live as locale-scoped `.mdx` files in `content/posts/<locale>/` (currently `es` and `en`) with YAML frontmatter (`title`, `date`, `excerpt`, `tags`). They are **not** routed directly as Next.js pages — instead, `src/lib/posts.ts` reads and parses them at build time using `gray-matter` and `reading-time`. The main post route is `src/app/[locale]/[slug]/page.tsx`, which fetches a post via `getPostBySlug(locale, slug)` and renders it using `next-mdx-remote/rsc` (a React Server Component). Legacy `/blog/[slug]` URLs redirect to the default locale (`/es/[slug]`).
 
 ### MDX rendering and syntax highlighting
 
@@ -36,7 +36,7 @@ The `mdx-components.tsx` at the project root (required by Next.js) exports `useM
 Both are installed, but they serve different roles:
 
 - `@next/mdx` (via `next.config.ts`) extends `pageExtensions` to allow `.md`/`.mdx` files as pages — not currently used for blog posts.
-- `next-mdx-remote/rsc` is what actually renders blog posts in `[slug]/page.tsx`.
+- `next-mdx-remote/rsc` is what actually renders blog posts in `src/app/[locale]/[slug]/page.tsx`.
 
 Avoid passing non-serializable values (functions, class instances) to `createMDX()` options in `next.config.ts` — Turbopack will reject them with a serialization error.
 
@@ -46,7 +46,7 @@ The layout uses `Ubuntu_Sans` and `Ubuntu_Sans_Mono` from `next/font/google`, ex
 
 ### Adding a new post
 
-Create `content/posts/<slug>.mdx` with this frontmatter:
+Create `content/posts/<locale>/<slug>.mdx` with this frontmatter:
 
 ```yaml
 ---
@@ -59,4 +59,4 @@ tags:
 ---
 ```
 
-`generateStaticParams` in `[slug]/page.tsx` will automatically pick it up at build time.
+Locales are strict (`es`, `en`). `generateStaticParams` in `src/app/[locale]/[slug]/page.tsx` automatically picks up every locale/slug pair at build time.
