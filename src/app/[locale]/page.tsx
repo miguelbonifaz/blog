@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Newsletter } from "@/components/Newsletter";
+// import { Newsletter } from "@/components/Newsletter"; // TODO: re-enable when ready
 import { absoluteUrl } from "@/lib/site";
 import { getAllPosts } from "@/lib/posts";
 import { getDateLocale, getOgLocale, getUiCopy, isLocale, SUPPORTED_LOCALES } from "@/lib/i18n";
@@ -69,7 +69,7 @@ export default async function LocaleHomePage({ params }: LocaleHomePageProps) {
             className="italic text-[var(--accent)] not-italic"
             style={{ fontStyle: "italic" }}
           >
-            Miguel.
+            Miguel Bonifaz
           </em>
         </h1>
 
@@ -83,7 +83,7 @@ export default async function LocaleHomePage({ params }: LocaleHomePageProps) {
         </div>
       </section>
 
-      <Newsletter locale={locale} />
+      {/* <Newsletter locale={locale} /> */} {/* TODO: re-enable when ready */}
 
       <section id="posts">
         <header className="flex items-baseline justify-between mb-10">
