@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Ubuntu_Sans, Ubuntu_Sans_Mono, Lora } from "next/font/google";
 import { UI_COPY } from "@/lib/i18n";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 const ubuntuSans = Ubuntu_Sans({
@@ -19,12 +20,26 @@ const lora = Lora({
   style: ["normal", "italic"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#d97706",
+};
+
 export const metadata: Metadata = {
   title: {
     default: UI_COPY.es.metadata.siteTitle,
     template: "%s | Miguel Bonifaz",
   },
   description: UI_COPY.es.metadata.siteDescription,
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+  },
+  icons: {
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -57,6 +72,7 @@ export default function RootLayout({
       <body
         className={`${ubuntuSans.variable} ${ubuntuSansMono.variable} ${lora.variable} font-sans antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col`}
       >
+        <ServiceWorkerRegistration />
         {children}
       </body>
     </html>

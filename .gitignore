@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next-pwa generated service worker files (if using build-time generation)
+public/workbox-*.js
+public/workbox-*.js.map
